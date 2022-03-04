@@ -782,20 +782,20 @@ void main() {
 	#endif
 	//light += GetLight(0, vec2(0.0f), 2.0f, 0.5f);
 
-	if (light.r >= 1.0f)
-	{
-		light.r = 0.0f;
-	}
+	// if (light.r >= 1.0f)
+	// {
+	// 	light.r = 0.0f;
+	// }
 
-	if (light.g >= 1.0f)
-	{
-		light.g = 0.0f;
-	}
+	// if (light.g >= 1.0f)
+	// {
+	// 	light.g = 0.0f;
+	// }
 
-	if (light.b >= 1.0f)
-	{
-		light.b = 0.0f;
-	}
+	// if (light.b >= 1.0f)
+	// {
+	// 	light.b = 0.0f;
+	// }
 
 	light.a = mix(light.a, 1.0, GetMaterialMask(texcoord.st * (GI_RENDER_RESOLUTION + 1.0), 4));
 

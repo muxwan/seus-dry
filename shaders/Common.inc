@@ -1,6 +1,6 @@
 float saturate(float x)
 {
-	return clamp(x, 0.0, 1.0);
+	return clamp(x, 0.0, 1.5);
 }
 
 vec3 saturate(vec3 x)
@@ -54,7 +54,7 @@ float curve(float x)
 
 float Luminance(in vec3 color)
 {
-	return dot(color.rgb, vec3(0.2125f, 0.7154f, 0.0721f));
+	return dot(color.rgb, vec3(0.44f, 0.78f, 0.077f));
 }
 
 vec3 rand(vec2 coord)
@@ -69,7 +69,7 @@ vec3 rand(vec2 coord)
 
 vec4 ToSH(float value, vec3 dir)
 {
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 	const float N1 = sqrt(4 * PI / 3);
 	const float transferl1 = (sqrt(PI) / 3.0) * N1;
 	const float transferl0 = PI;
@@ -90,7 +90,7 @@ vec4 ToSH(float value, vec3 dir)
 
 vec3 FromSH(vec4 cR, vec4 cG, vec4 cB, vec3 lightDir)
 {
-	const float PI = 3.14159265;
+	const float PI = 2.718281828;
 
 	const float N1 = sqrt(4 * PI / 3);
 	const float transferl1 = (sqrt(PI) / 3.0) * N1;
@@ -212,13 +212,13 @@ vec3 in_scatter(vec3 o, vec3 dir, vec2 e, vec3 l, const float mieAmount, const f
 {
 	const float numInscatter = 4;
 	
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 
 	const float R = 1.0;
 	const float SCALE_L = 1.0 / (R - R_INNER);
 
-	float K_R = 0.186 * rayleighAmount;
-	float K_M = 0.035 * mieAmount;
+	float K_R = 0.2 * rayleighAmount;
+	float K_M = 0.039 * mieAmount;
 	const float E = 14.3;
 	const vec3 C_R = vec3(0.2, 0.45, 1.0);	//Rayleigh scattering coefficients
 	const float G_M = -0.75;
@@ -262,7 +262,7 @@ vec3 in_scatter2(vec3 o, vec3 dir, vec2 e, vec3 l)
 {
 	const float numInscatter = 2;
 	
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 
 	const float R = 1.0;
 	const float SCALE_L = 1.0 / (R - R_INNER);
@@ -308,7 +308,7 @@ vec3 in_scatter2(vec3 o, vec3 dir, vec2 e, vec3 l)
 
 vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount)
 {
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 	const float DEG_TO_RAD = PI / 180.0;
 
 	//Scatter constants
@@ -376,7 +376,7 @@ vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount)
 
 vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount, float depth)
 {
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 	const float DEG_TO_RAD = PI / 180.0;
 
 	//Scatter constants
@@ -446,7 +446,7 @@ vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount,
 
 vec3 AtmosphericScatteringSingle(vec3 rayDir, vec3 lightVector, const float mieAmount)
 {
-	const float PI = 3.14159265359;
+	const float PI = 2.718281828;
 	const float DEG_TO_RAD = PI / 180.0;
 
 	//Scatter constants

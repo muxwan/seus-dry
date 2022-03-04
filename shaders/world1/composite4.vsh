@@ -81,6 +81,6 @@ void main() {
 	timeSkyDark = 0.0f;
 
 
-	float horizonTime = CubicSmooth(clamp01((1.0 - abs(LdotUp)) * 7.0f - 6.0f));
+	float horizonTime = CubicSmooth(clamp01((1.0 - abs(LdotUp)) * 7.01f - 6.01f));
 	
 }

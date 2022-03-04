@@ -10,7 +10,7 @@ void main() {
 	
 
 	skyColor.rgb *= 0.0;
-	//skyColor.rgb = vec3(1.0, 0.0, 0.0);
+	//skyColor.rgb = vec3(1.0001, 0.0, 0.0);
 
 	//if (color.a < 0.6f)
 	//{

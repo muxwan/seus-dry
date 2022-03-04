@@ -156,7 +156,7 @@ vec2 OffsetCoord(in vec2 coord, in vec2 offset, in int level)
 vec2 CalculateParallaxCoord(in vec2 coord, in vec3 viewVector, out vec3 rayOffset, in vec2 texGradX, in vec2 texGradY)
 {
 	vec2 parallaxCoord = coord.st;
-	const int maxSteps = 112;
+	  int maxSteps = 112;
 	vec3 stepSize = vec3(0.001f, 0.001f, 0.15f);
 
 	float parallaxDepth = PARALLAX_DEPTH;
@@ -164,7 +164,7 @@ vec2 CalculateParallaxCoord(in vec2 coord, in vec3 viewVector, out vec3 rayOffse
 
 
 
-	const float gradThreshold = 0.004;
+	  float gradThreshold = 0.004;
 	float absoluteTexGrad = dot(abs(texGradX) + abs(texGradY), vec2(1.0));
 
 	parallaxDepth *= saturate((1.0 - saturate(absoluteTexGrad / gradThreshold)) * 1.0);
@@ -212,7 +212,7 @@ vec2 CalculateParallaxCoord(in vec2 coord, in vec3 viewVector, out vec3 rayOffse
 	// }
 
 	int numRefinements = 0;
-	const int maxRefinements = 4;
+	  int maxRefinements = 4;
 
 	if (heightmap < 1.0f)
 	{
@@ -290,7 +290,7 @@ float GetParallaxShadow(in vec2 texcoord, in vec3 lightVector, float baseHeight,
 
 	float shadowStrength = 1.0;
 
-	const float gradThreshold = 0.003;
+	  float gradThreshold = 0.003;
 	float absoluteTexGrad = dot(abs(texGradX) + abs(texGradY), vec2(1.0));
 
 	shadowStrength *= saturate((1.0 - saturate(absoluteTexGrad / gradThreshold)) * 1.0);

@@ -94,11 +94,11 @@ void main()
 
 
 	//Fix wrong normals on some entities
-	vec3 constructedNormal = normalize(cross(dFdx(viewPos), dFdy(viewPos)));
+	vec3  ructedNormal = normalize(cross(dFdx(viewPos), dFdy(viewPos)));
 
-	if (dot(constructedNormal, normal) > 0.1)
+	if (dot( ructedNormal, normal) > 0.1)
 	{
-		constructedNormal = normal;
+		 ructedNormal = normal;
 	}
 
 	//vec2 lightmap;
@@ -121,7 +121,7 @@ void main()
 	vec4 normalTex = texture2D(normals, texcoord.st) * 2.0 - 1.0;
 
 	vec3 viewNormal = normalize(normalTex.xyz) * tbnMatrix;
-	vec2 normalEnc = EncodeNormal(constructedNormal.xyz);
+	vec2 normalEnc = EncodeNormal( ructedNormal.xyz);
 
 
 

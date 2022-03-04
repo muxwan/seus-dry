@@ -5,7 +5,6 @@ varying vec4 texcoord;
 varying vec4 lmcoord;
 varying vec3 worldPosition;
 
-
 attribute vec4 mc_Entity;
 
 uniform int worldTime;

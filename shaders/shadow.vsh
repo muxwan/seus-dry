@@ -301,7 +301,7 @@ void main() {
 	}
 
 
-	const float pi = 3.14159265;
+	  float pi = 3.14159265;
 
 	if (materialIDs == 3.0f && texcoord.t < 1.90 && texcoord.t > -1.0) {
 		float speed = 0.05;

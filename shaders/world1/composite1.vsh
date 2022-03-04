@@ -1,6 +1,6 @@
 #version 120
 
-#define SKY_DESATURATION 0.0f
+#define SKY_DESATURATION 0.001f
 
 varying vec4 texcoord;
 

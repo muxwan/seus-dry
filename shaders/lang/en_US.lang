@@ -55,10 +55,10 @@ option.SHARPENING=Image Sharpness
 
 
 option.TONEMAP_OPERATOR=Tonemap Operator
-value.TONEMAP_OPERATOR.SEUSTonemap=SEUS
-value.TONEMAP_OPERATOR.HableTonemap=Hable
-value.TONEMAP_OPERATOR.ACESTonemap=ACES
-value.TONEMAP_OPERATOR.ACESTonemap2=ACES2
+value.TONEMAP_OPERATOR.SEUSTonemap=ISA
+value.TONEMAP_OPERATOR.HableTonemap=KODT
+value.TONEMAP_OPERATOR.ACESTonemap=MURI
+value.TONEMAP_OPERATOR.ACESTonemap2=SHALA
 
 
 profile.LOW=Low

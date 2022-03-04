@@ -85,7 +85,7 @@ void main()
 	//albedo.rgb = vec3(length(viewPos.xyz));
 
 	//Fix wrong normals on some entities
-	vec3 constructedNormal = normalize(cross(dFdx(viewPos), dFdy(viewPos)));
+	vec3  ructedNormal = normalize(cross(dFdx(viewPos), dFdy(viewPos)));
 
 	//vec2 lightmap;
 	// lightmap.x = clamp((lmcoord.x * 33.05f / 32.0f) - 1.05f / 32.0f, 0.0f, 1.0f);
@@ -107,7 +107,7 @@ void main()
 	vec4 normalTex = texture2D(normals, texcoord.st) * 2.0 - 1.0;
 
 	vec3 viewNormal = normalize(normalTex.xyz) * tbnMatrix;
-	vec2 normalEnc = EncodeNormal(constructedNormal.xyz);
+	vec2 normalEnc = EncodeNormal( ructedNormal.xyz);
 
 
 

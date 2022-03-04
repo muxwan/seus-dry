@@ -491,7 +491,7 @@ void main()
 	// colorSkyTint = mix(colorSkyTint, colorSkyTint * 0.5f, timeSunrise);
 	// colorSkyTint = mix(colorSkyTint, colorSkyTint * 1.0f, timeNoon);
 	// colorSkyTint = mix(colorSkyTint, colorSkyTint * 0.5f, timeSunset);
-	// colorSkyTint = mix(colorSkyTint, colorSkyTint * 0.0045f, timeMidnight);
+	// colorSkyTint = mix(colorSkyTint, colorSkyTint * 0.0044f, timeMidnight);
 	
 
 

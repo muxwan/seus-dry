@@ -25,7 +25,7 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 #define TAA_SOFTNESS 0.0 // Softness of temporal anti-aliasing. Default 0.0 [0.0 0.2 0.4 0.6 0.8 1.0]
 #define SHARPENING 0.0 // Sharpening of the image. Default 0.0 [0.0 0.2 0.4 0.8 1.0]
 
-#define TAA_ENABLED // Temporal Anti-Aliasing. Utilizes multiple rendered frames to reconstruct an anti-aliased image similar to supersampling. Can cause some artifacts.
+#define TAA_ENABLED // Temporal Anti-Aliasing. Utilizes multiple rendered frames to re ruct an anti-aliased image similar to supersampling. Can cause some artifacts.
 //#define TAA_AGGRESSIVE // Makes Temporal Anti-Aliasing more generously blend previous frames. This results in a more stable and smoother image, but causes more noticeable artifacts with movement.
 
 /////////////////////////END OF CONFIGURABLE VARIABLES/////////////////////////////////////////////////////////////////////////////////////////////////////////////

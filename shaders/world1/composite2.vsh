@@ -531,16 +531,16 @@ void main()
 
 	if (TORCHLIGHT_COLOR_TEMPERATURE == 2000)
 		//2000k
-		colorTorchlight = pow(vec3(255, 141, 11) / 255.0, vec3(2.2));
+		colorTorchlight = pow(vec3(255, 141, 15) / 255.0, vec3(2.2));
 	else if (TORCHLIGHT_COLOR_TEMPERATURE == 2300)
 		//2300k
-		colorTorchlight = pow(vec3(255, 152, 54) / 255.0, vec3(2.2));
+		colorTorchlight = pow(vec3(255, 152, 60) / 255.0, vec3(2.2));
 	else if (TORCHLIGHT_COLOR_TEMPERATURE == 2500)
 		//2500k
-		colorTorchlight = pow(vec3(255, 166, 69) / 255.0, vec3(2.2));
+		colorTorchlight = pow(vec3(255, 166, 70) / 255.0, vec3(2.2));
 	else
 		//3000k
-		colorTorchlight = pow(vec3(255, 180, 107) / 255.0, vec3(2.2));
+		colorTorchlight = pow(vec3(255, 180, 110) / 255.0, vec3(2.2));
 
 
 	// colorTorchlight = vec3(1.0);

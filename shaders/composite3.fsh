@@ -34,13 +34,13 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 #define SUNLIGHT_INTENSITY 1.0 // Intensity of sunlight. [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0]
 
 
-const int 		noiseTextureResolution  = 64;
+  int 		noiseTextureResolution  = 64;
 
 
 /* DRAWBUFFERS:6 */
 
 
-const bool gaux3MipmapEnabled = true;
+  bool gaux3MipmapEnabled = true;
 
 uniform sampler2D gcolor;
 uniform sampler2D gdepth;
@@ -128,7 +128,7 @@ float 	ExpToLinearDepth(in float depth)
 	return 2.0f * near * far / (far + near - (2.0f * depth - 1.0f) * (far - near));
 }
 
-float GetMaterialMask(const in int ID, in float matID) 
+float GetMaterialMask(  in int ID, in float matID) 
 {
 	//Catch last part of sky
 	if (matID > 254.0f) 
@@ -321,7 +321,7 @@ bool 	GetSkyMask(in vec2 coord)
 }
 
 
-vec4 BilateralUpsample(const in float scale, in vec2 offset, in float depth, in vec3 normal)
+vec4 BilateralUpsample(  in float scale, in vec2 offset, in float depth, in vec3 normal)
 {
 	vec2 recipres = vec2(1.0f / viewWidth, 1.0f / viewHeight);
 
@@ -475,7 +475,7 @@ vec3 GetWavesNormal2(vec3 position, float time)
 
 	float WAVE_HEIGHT = 1.0;
 
-	const float sampleDistance = 11.0f;
+	  float sampleDistance = 11.0f;
 
 	position -= vec3(0.005f, 0.0f, 0.005f) * sampleDistance;
 
@@ -671,7 +671,7 @@ vec4 	ComputeRaytraceReflection(vec3 normal, bool edgeClamping)
     vec3 cameraSpaceVectorPosition = oldPosition + cameraSpaceVector;
     vec3 currentPosition = convertCameraSpaceToScreenSpace(cameraSpaceVectorPosition);
 
-    const int maxRefinements = 5;
+      int maxRefinements = 5;
 	int numRefinements = 0;
     int count = 0;
 	vec2 finalSamplePos = vec2(0.0f);

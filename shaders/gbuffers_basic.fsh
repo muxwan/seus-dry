@@ -3,8 +3,8 @@
 
 varying vec4 color;
 
-const int GL_LINEAR = 9729;
-const int GL_EXP = 2048;
+  int GL_LINEAR = 9729;
+  int GL_EXP = 2048;
 
 uniform int fogMode;
 

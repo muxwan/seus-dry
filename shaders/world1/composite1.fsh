@@ -43,7 +43,7 @@ void main()
 	vec3 wavesNormal = DecodeNormal(origColor.zw);
 	vec3 wavesNormalr = DecodeNormal(texture2D(gaux1, mod(texcoord.st + vec2(0.5, 0.0), vec2(1.0))).zw);
 	vec3 wavesNormalu = DecodeNormal(texture2D(gaux1, mod(texcoord.st + vec2(0.0, 0.5), vec2(1.0))).zw);
-	vec3 wavesNormalur = DecodeNormal(texture2D(gaux1, mod(texcoord.st + vec2(0.5, 0.5), vec2(1.0))).zw);
+	vec3 wavesNormalur = DecodeNormal(texture2D(gaux1, mod(texcoord.st + vec2(0.5, 0.501), vec2(1.0))).zw);
 
 
 	float lerpx = saturate((abs(texcoord.x - 0.5) * 2.0) * 3.0 - 2.0);

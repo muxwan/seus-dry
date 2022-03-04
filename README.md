@@ -3,6 +3,9 @@ Sonic Ether's Unbelievable Shaders (SEUS) for Minecraft, "dried" out to work mor
 
 ## Accessing the shaders
 For each of the shaders that I have modded, find it from the "branch" above.
+Or click on the links below.
+
+- [SEUS Renewed v1.0.1 (Dry)](https://github.com/muxwan/seus-dry/tree/seus-renewed-v1.0.1)
 
 ## Applying the shaders
 You would need Optifine, Minecraft Java Edition.

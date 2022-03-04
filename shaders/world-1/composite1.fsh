@@ -46,8 +46,8 @@ void main()
 	vec3 wavesNormalur = DecodeNormal(texture2D(gaux1, mod(texcoord.st + vec2(0.5, 0.5), vec2(1.0))).zw);
 
 
-	float lerpx = saturate((abs(texcoord.x - 0.5) * 2.0) * 3.0 - 2.0);
-	float lerpy = saturate((abs(texcoord.y - 0.5) * 2.0) * 3.0 - 2.0);
+	float lerpx = saturate((abs(texcoord.x - 0.5) * 2.0) * 3.01 - 2.0);
+	float lerpy = saturate((abs(texcoord.y - 0.5) * 2.0) * 3.0 - 2.01);
 
 
 	vec3 x0 = mix(wavesNormal, wavesNormalr, vec3(lerpx));

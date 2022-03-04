@@ -41,7 +41,7 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 
 #define TORCHLIGHT_BRIGHTNESS 1.0 // Brightness of torch light. [0.5 1.0 2.0 3.0 4.0]
 
-#define TAA_ENABLED // Temporal Anti-Aliasing. Utilizes multiple rendered frames to reconstruct an anti-aliased image similar to supersampling. Can cause some artifacts.
+#define TAA_ENABLED // Temporal Anti-Aliasing. Utilizes multiple rendered frames to re ruct an anti-aliased image similar to supersampling. Can cause some artifacts.
 
 #define SUNLIGHT_INTENSITY 1.0 // Intensity of sunlight. [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0]
 
@@ -49,51 +49,51 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 
 #define HELD_TORCHLIGHT // Holding an item with a light value will cast light into the scene when this is enabled. 
 
-const int 		shadowMapResolution 	= 2048;	// Shadowmap resolution [1024 2048 4096]
-const float 	shadowDistance 			= 120.0; // Shadow distance. Set lower if you prefer nicer close shadows. Set higher if you prefer nicer distant shadows. [80.0 120.0 180.0 240.0]
-const float 	shadowIntervalSize 		= 4.0f;
-const bool 		shadowHardwareFiltering0 = true;
+  int 		shadowMapResolution 	= 2048;	// Shadowmap resolution [1024 2048 4096]
+  float 	shadowDistance 			= 120.0; // Shadow distance. Set lower if you prefer nicer close shadows. Set higher if you prefer nicer distant shadows. [80.0 120.0 180.0 240.0]
+  float 	shadowIntervalSize 		= 4.0f;
+  bool 		shadowHardwareFiltering0 = true;
 
-const bool 		shadowtex1Mipmap = true;
-const bool 		shadowtex1Nearest = false;
-const bool 		shadowcolor0Mipmap = true;
-const bool 		shadowcolor0Nearest = false;
-const bool 		shadowcolor1Mipmap = true;
-const bool 		shadowcolor1Nearest = false;
+  bool 		shadowtex1Mipmap = true;
+  bool 		shadowtex1Nearest = false;
+  bool 		shadowcolor0Mipmap = true;
+  bool 		shadowcolor0Nearest = false;
+  bool 		shadowcolor1Mipmap = true;
+  bool 		shadowcolor1Nearest = false;
 
-const float shadowDistanceRenderMul = 1.0f;
+  float shadowDistanceRenderMul = 1.0f;
 
-const int 		RGB8 					= 0;
-const int 		RGBA8 					= 0;
-const int 		RGBA16 					= 0;
-const int 		RG16 					= 0;
-const int 		RGB16 					= 0;
-const int 		gcolorFormat 			= RGB8;
-const int 		gdepthFormat 			= RGBA8;
-const int 		gnormalFormat 			= RGB16;
-const int 		compositeFormat 		= RGB8;
-const int 		gaux1Format 			= RGBA16;
-const int 		gaux2Format 			= RGBA8;
-const int 		gaux3Format 			= RGBA16;
-const int 		gaux4Format 			= RGBA16;
-
-
-const int 		superSamplingLevel 		= 0;
-
-const float		sunPathRotation 		= -40.0f;
-
-const int 		noiseTextureResolution  = 64;
-
-const float 	ambientOcclusionLevel 	= 0.06f;
+  int 		RGB8 					= 0;
+  int 		RGBA8 					= 0;
+  int 		RGBA16 					= 0;
+  int 		RG16 					= 0;
+  int 		RGB16 					= 0;
+  int 		gcolorFormat 			= RGB8;
+  int 		gdepthFormat 			= RGBA8;
+  int 		gnormalFormat 			= RGB16;
+  int 		compositeFormat 		= RGB8;
+  int 		gaux1Format 			= RGBA16;
+  int 		gaux2Format 			= RGBA8;
+  int 		gaux3Format 			= RGBA16;
+  int 		gaux4Format 			= RGBA16;
 
 
-const bool gaux3MipmapEnabled = true;
-const bool gaux1MipmapEnabled = false;
+  int 		superSamplingLevel 		= 0;
 
-const bool gaux4Clear = false;
+  float		sunPathRotation 		= -40.0f;
 
-const float wetnessHalflife = 1.0;
-const float drynessHalflife = 60.0;
+  int 		noiseTextureResolution  = 64;
+
+  float 	ambientOcclusionLevel 	= 0.06f;
+
+
+  bool gaux3MipmapEnabled = true;
+  bool gaux1MipmapEnabled = false;
+
+  bool gaux4Clear = false;
+
+  float wetnessHalflife = 1.0;
+  float drynessHalflife = 60.0;
 
 /* DRAWBUFFERS:26 */
 
@@ -182,9 +182,9 @@ varying float heldLightBlacklist;
 void TemporalJitterProjPos(inout vec4 pos)
 {
 	#ifdef TAA_ENABLED
-	const vec2 haltonSequenceOffsets[16] = vec2[16](vec2(-1, -1), vec2(0, -0.3333333), vec2(-0.5, 0.3333334), vec2(0.5, -0.7777778), vec2(-0.75, -0.1111111), vec2(0.25, 0.5555556), vec2(-0.25, -0.5555556), vec2(0.75, 0.1111112), vec2(-0.875, 0.7777778), vec2(0.125, -0.9259259), vec2(-0.375, -0.2592592), vec2(0.625, 0.4074074), vec2(-0.625, -0.7037037), vec2(0.375, -0.03703701), vec2(-0.125, 0.6296296), vec2(0.875, -0.4814815));
-	const vec2 bayerSequenceOffsets[16] = vec2[16](vec2(0, 3) / 16.0, vec2(8, 11) / 16.0, vec2(2, 1) / 16.0, vec2(10, 9) / 16.0, vec2(12, 15) / 16.0, vec2(4, 7) / 16.0, vec2(14, 13) / 16.0, vec2(6, 5) / 16.0, vec2(3, 0) / 16.0, vec2(11, 8) / 16.0, vec2(1, 2) / 16.0, vec2(9, 10) / 16.0, vec2(15, 12) / 16.0, vec2(7, 4) / 16.0, vec2(13, 14) / 16.0, vec2(5, 6) / 16.0);
-	const vec2 otherOffsets[16] = vec2[16](vec2(0.375, 0.4375), vec2(0.625, 0.0625), vec2(0.875, 0.1875), vec2(0.125, 0.0625),
+	  vec2 haltonSequenceOffsets[16] = vec2[16](vec2(-1, -1), vec2(0, -0.3333333), vec2(-0.5, 0.3333334), vec2(0.5, -0.7777778), vec2(-0.75, -0.1111111), vec2(0.25, 0.5555556), vec2(-0.25, -0.5555556), vec2(0.75, 0.1111112), vec2(-0.875, 0.7777778), vec2(0.125, -0.9259259), vec2(-0.375, -0.2592592), vec2(0.625, 0.4074074), vec2(-0.625, -0.7037037), vec2(0.375, -0.03703701), vec2(-0.125, 0.6296296), vec2(0.875, -0.4814815));
+	  vec2 bayerSequenceOffsets[16] = vec2[16](vec2(0, 3) / 16.0, vec2(8, 11) / 16.0, vec2(2, 1) / 16.0, vec2(10, 9) / 16.0, vec2(12, 15) / 16.0, vec2(4, 7) / 16.0, vec2(14, 13) / 16.0, vec2(6, 5) / 16.0, vec2(3, 0) / 16.0, vec2(11, 8) / 16.0, vec2(1, 2) / 16.0, vec2(9, 10) / 16.0, vec2(15, 12) / 16.0, vec2(7, 4) / 16.0, vec2(13, 14) / 16.0, vec2(5, 6) / 16.0);
+	  vec2 otherOffsets[16] = vec2[16](vec2(0.375, 0.4375), vec2(0.625, 0.0625), vec2(0.875, 0.1875), vec2(0.125, 0.0625),
 vec2(0.375, 0.6875), vec2(0.875, 0.4375), vec2(0.625, 0.5625), vec2(0.375, 0.9375),
 vec2(0.625, 0.3125), vec2(0.125, 0.5625), vec2(0.125, 0.8125), vec2(0.375, 0.1875),
 vec2(0.875, 0.9375), vec2(0.875, 0.6875), vec2(0.125, 0.3125), vec2(0.625, 0.8125)
@@ -199,9 +199,9 @@ vec2(0.875, 0.9375), vec2(0.875, 0.6875), vec2(0.125, 0.3125), vec2(0.625, 0.812
 void TemporalJitterProjPos(inout vec3 pos)
 {
 	#ifdef TAA_ENABLED
-	const vec2 haltonSequenceOffsets[16] = vec2[16](vec2(-1, -1), vec2(0, -0.3333333), vec2(-0.5, 0.3333334), vec2(0.5, -0.7777778), vec2(-0.75, -0.1111111), vec2(0.25, 0.5555556), vec2(-0.25, -0.5555556), vec2(0.75, 0.1111112), vec2(-0.875, 0.7777778), vec2(0.125, -0.9259259), vec2(-0.375, -0.2592592), vec2(0.625, 0.4074074), vec2(-0.625, -0.7037037), vec2(0.375, -0.03703701), vec2(-0.125, 0.6296296), vec2(0.875, -0.4814815));
-	const vec2 bayerSequenceOffsets[16] = vec2[16](vec2(0, 3) / 16.0, vec2(8, 11) / 16.0, vec2(2, 1) / 16.0, vec2(10, 9) / 16.0, vec2(12, 15) / 16.0, vec2(4, 7) / 16.0, vec2(14, 13) / 16.0, vec2(6, 5) / 16.0, vec2(3, 0) / 16.0, vec2(11, 8) / 16.0, vec2(1, 2) / 16.0, vec2(9, 10) / 16.0, vec2(15, 12) / 16.0, vec2(7, 4) / 16.0, vec2(13, 14) / 16.0, vec2(5, 6) / 16.0);
-	const vec2 otherOffsets[16] = vec2[16](vec2(0.375, 0.4375), vec2(0.625, 0.0625), vec2(0.875, 0.1875), vec2(0.125, 0.0625),
+	  vec2 haltonSequenceOffsets[16] = vec2[16](vec2(-1, -1), vec2(0, -0.3333333), vec2(-0.5, 0.3333334), vec2(0.5, -0.7777778), vec2(-0.75, -0.1111111), vec2(0.25, 0.5555556), vec2(-0.25, -0.5555556), vec2(0.75, 0.1111112), vec2(-0.875, 0.7777778), vec2(0.125, -0.9259259), vec2(-0.375, -0.2592592), vec2(0.625, 0.4074074), vec2(-0.625, -0.7037037), vec2(0.375, -0.03703701), vec2(-0.125, 0.6296296), vec2(0.875, -0.4814815));
+	  vec2 bayerSequenceOffsets[16] = vec2[16](vec2(0, 3) / 16.0, vec2(8, 11) / 16.0, vec2(2, 1) / 16.0, vec2(10, 9) / 16.0, vec2(12, 15) / 16.0, vec2(4, 7) / 16.0, vec2(14, 13) / 16.0, vec2(6, 5) / 16.0, vec2(3, 0) / 16.0, vec2(11, 8) / 16.0, vec2(1, 2) / 16.0, vec2(9, 10) / 16.0, vec2(15, 12) / 16.0, vec2(7, 4) / 16.0, vec2(13, 14) / 16.0, vec2(5, 6) / 16.0);
+	  vec2 otherOffsets[16] = vec2[16](vec2(0.375, 0.4375), vec2(0.625, 0.0625), vec2(0.875, 0.1875), vec2(0.125, 0.0625),
 vec2(0.375, 0.6875), vec2(0.875, 0.4375), vec2(0.625, 0.5625), vec2(0.375, 0.9375),
 vec2(0.625, 0.3125), vec2(0.125, 0.5625), vec2(0.125, 0.8125), vec2(0.375, 0.1875),
 vec2(0.875, 0.9375), vec2(0.875, 0.6875), vec2(0.125, 0.3125), vec2(0.625, 0.8125)
@@ -246,7 +246,7 @@ float 	ExpToLinearDepth(in float depth)
 }
 
 
-float GetMaterialMask(const in int ID, in float matID) 
+float GetMaterialMask(  in int ID, in float matID) 
 {
 	//Catch last part of sky
 	if (matID > 254.0f) 
@@ -741,7 +741,7 @@ float RenderSunDisc(vec3 worldDir, vec3 sunDir)
 }
 
 
-vec4 BilateralUpsample(const in float scale, in vec2 offset, in float depth, in vec3 normal)
+vec4 BilateralUpsample(  in float scale, in vec2 offset, in float depth, in vec3 normal)
 {
 	vec2 recipres = vec2(1.0f / viewWidth, 1.0f / viewHeight);
 
@@ -875,9 +875,9 @@ float CalculateWaterCaustics(vec4 screenSpacePosition, MaterialMask mask)
 	vec3 lookupCenter = worldPos.xyz - flatRefractVector * pointToWaterLength;
 
 
-	const float distanceThreshold = 0.15;
+	  float distanceThreshold = 0.15;
 
-	const int numSamples = 1;
+	  int numSamples = 1;
 	int c = 0;
 
 	float caustics = 0.0;
@@ -1038,10 +1038,10 @@ vec3 ProjectBack(vec3 cameraSpace)
 
 float GetAO(vec2 coord, vec3 normal, float dither)
 {
-	const int numRays = 16;
+	  int numRays = 16;
 
-	const float phi = 1.618033988;
-	const float gAngle = phi * 3.14159265 * 1.0003;
+	  float phi = 1.618033988;
+	  float gAngle = phi * 3.14159265 * 1.0003;
 
 	float depth = GetDepth(coord);
 	float linDepth = ExpToLinearDepth(depth);
@@ -1049,7 +1049,7 @@ float GetAO(vec2 coord, vec3 normal, float dither)
 
 	float aoAccum = 0.0;
 
-	const float radius = 2.0;
+	  float radius = 2.0;
 	
 	for (int i = 0; i < numRays; i++)
 	{
@@ -1218,8 +1218,8 @@ float ScreenSpaceShadow(vec3 origin, vec3 normal, MaterialMask mask)
 
 float OrenNayar(vec3 normal, vec3 eyeDir, vec3 lightDir)
 {
-	const float PI = 3.14159;
-	const float roughness = 0.55;
+	  float PI = 3.14159;
+	  float roughness = 0.55;
 
 	// interpolating normals will change the length of the normal, so renormalize the normal.
 
@@ -1387,7 +1387,7 @@ float   CalculateSunglow(vec3 npos, vec3 lightVector) {
 	return factor * factor * factor * factor;
 }
 
-vec4 CloudColor(in vec4 worldPosition, in float sunglow, in vec3 worldLightVector, in float altitude, in float thickness, const bool isShadowPass)
+vec4 CloudColor(in vec4 worldPosition, in float sunglow, in vec3 worldLightVector, in float altitude, in float thickness,   bool isShadowPass)
 {
 
 	float cloudHeight = altitude;
@@ -1441,7 +1441,7 @@ vec4 CloudColor(in vec4 worldPosition, in float sunglow, in vec3 worldLightVecto
 
 	noise = GetCoverage(coverage, density, noise);
 
-	const float lightOffset = 0.4f;
+	  float lightOffset = 0.4f;
 
 
 
@@ -1549,7 +1549,7 @@ void CloudPlane(inout vec3 color, vec3 viewDir, vec3 worldVector, float linearDe
 
 			float cloudDist = length(intersection.pos.xyz - cameraPosition.xyz);
 
-			const vec3 absorption = vec3(0.2, 0.4, 1.0);
+			  vec3 absorption = vec3(0.2, 0.4, 1.0);
 
 			cloudSample.rgb *= exp(-cloudDist * absorption * 0.0001 * saturate(1.0 - sunglow * 2.0) * (1.0 - rainStrength));
 
@@ -1827,7 +1827,7 @@ void main()
 
 
 	//Torchlight
-	const float torchlightBrightness = 3.7 * TORCHLIGHT_BRIGHTNESS;
+	  float torchlightBrightness = 3.7 * TORCHLIGHT_BRIGHTNESS;
 
 
 	finalComposite += gbuffer.mcLightmap.r * colorTorchlight * gbuffer.albedo * 0.5 * ao * torchlightBrightness;

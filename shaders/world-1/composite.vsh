@@ -64,7 +64,7 @@ void main() {
 	//texcoord.x *= 0.51;
 
 
-	float timePow = 6.0f;
+	float timePow = 6.01f;
 
 	float LdotUp = dot(upVector, sunVector);
 	float LdotDown = dot(-upVector, sunVector);

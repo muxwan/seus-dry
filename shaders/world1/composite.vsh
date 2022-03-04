@@ -61,7 +61,7 @@ void main() {
 	//gl_Position.x *= 0.51;
 	//gl_Position.x -= 0.49;
 
-	//texcoord.x *= 0.51;
+	//texcoord.x *= 0.50;
 
 
 	float timePow = 6.0f;

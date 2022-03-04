@@ -30,7 +30,7 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 /* DRAWBUFFERS:2 */
 
 
-const bool gaux3MipmapEnabled = true;
+  bool gaux3MipmapEnabled = true;
 
 uniform sampler2D gcolor;
 uniform sampler2D gdepth;
@@ -93,7 +93,7 @@ vec2 ClampCoord(vec2 coord, vec2 texel)
 	return saturate(coord);
 }
 
-vec3 GrabBlurH(vec2 coord, const float octave, const vec2 offset)
+vec3 GrabBlurH(vec2 coord,   float octave,   vec2 offset)
 {
 	float scale = exp2(octave);
 

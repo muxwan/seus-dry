@@ -102,17 +102,17 @@ uniform vec3 skyColor;
 uniform float nightVision;
 
 
-const float overlap = 0.2;
+  float overlap = 0.2;
 
-const float rgOverlap = 0.1 * overlap;
-const float rbOverlap = 0.01 * overlap;
-const float gbOverlap = 0.04 * overlap;
+  float rgOverlap = 0.1 * overlap;
+  float rbOverlap = 0.01 * overlap;
+  float gbOverlap = 0.04 * overlap;
 
-const mat3 coneOverlap = mat3(1.0, 			rgOverlap, 	rbOverlap,
+  mat3 coneOverlap = mat3(1.0, 			rgOverlap, 	rbOverlap,
 							  rgOverlap, 	1.0, 		gbOverlap,
 							  rbOverlap, 	rgOverlap, 	1.0);
 
-const mat3 coneOverlapInverse = mat3(	1.0 + (rgOverlap + rbOverlap), 			-rgOverlap, 	-rbOverlap,
+  mat3 coneOverlapInverse = mat3(	1.0 + (rgOverlap + rbOverlap), 			-rgOverlap, 	-rbOverlap,
 									  	-rgOverlap, 		1.0 + (rgOverlap + gbOverlap), 		-gbOverlap,
 									  	-rbOverlap, 		-rgOverlap, 	1.0 + (rbOverlap + rgOverlap));
 
@@ -144,7 +144,7 @@ vec3 SEUSTonemap(vec3 color)
 
 
 
-	const float p = TONEMAP_CURVE;
+	  float p = TONEMAP_CURVE;
 	color = pow(color, vec3(p));
 	color = color / (1.0 + color);
 	color = pow(color, vec3(1.0 / p));
@@ -182,12 +182,12 @@ vec3 HableTonemap(vec3 x)
 
 	x *= 1.5;
 
-	const float A = 0.15;
-	const float B = 0.50;
-	const float C = 0.10;
-	const float D = 0.20;
-	const float E = 0.00;
-	const float F = 0.30;
+	  float A = 0.15;
+	  float B = 0.50;
+	  float C = 0.10;
+	  float D = 0.20;
+	  float E = 0.00;
+	  float F = 0.30;
 
 	x = pow(x, vec3(TONEMAP_CURVE));
 
@@ -257,7 +257,7 @@ vec3 Tonemap2(vec3 color)
 {
 	color *= 1.3;
 
-	const float p = 2.9;
+	  float p = 2.9;
 	color = pow(color, vec3(p));
 	color = color / (1.0 + color);
 	color = pow(color, vec3(1.0 / p));
@@ -338,7 +338,7 @@ vec4 BicubicTexture(in sampler2D tex, in vec2 coord)
     return mix( mix(sample3, sample2, sx), mix(sample1, sample0, sx), sy);
 }
 
-vec3 GetBloomTap(vec2 coord, const float octave, const vec2 offset)
+vec3 GetBloomTap(vec2 coord,   float octave,   vec2 offset)
 {
 	float scale = exp2(octave);
 

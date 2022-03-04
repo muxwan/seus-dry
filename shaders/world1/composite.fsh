@@ -806,7 +806,7 @@ void main() {
 	vec4 gaux1Color = texture2D(gaux1, texcoord.st);
 	
 	gl_FragData[0] = vec4(gaux1Color.xy, wavesNormal.xy);
-	gl_FragData[1] = vec4(pow(light.rgb, vec3(1.0 / 2.2)), light.a);
+	gl_FragData[1] = vec4(pow(light.rgb, vec3(1.0 / 2.20)), light.a);
 	//gl_FragData[1] = vec4(GetWavesNormal(vec3(texcoord.s * 50.0, 1.0, texcoord.t * 50.0)).xyz * 0.5 + 0.5, 1.0);
 	// gl_FragData[1] = vec4(0.0, 0.0, 0.0, 0.0);
 }

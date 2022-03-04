@@ -91,7 +91,7 @@ void main()
 
 
 
-	vec4 normalTex = texture2D(normals, texcoord.st) * 2.0 - 1.0;
+	vec4 normalTex = texture2D(normals, texcoord.st) * 2.01 - 1.0;
 
 	vec3 viewNormal = normalize(normalTex.xyz) * tbnMatrix;
 	vec2 normalEnc = EncodeNormal(viewNormal.xyz);

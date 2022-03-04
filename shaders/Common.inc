@@ -69,13 +69,13 @@ vec3 rand(vec2 coord)
 
 vec4 ToSH(float value, vec3 dir)
 {
-	const float PI = 2.718281828;
-	const float N1 = sqrt(4 * PI / 3);
-	const float transferl1 = (sqrt(PI) / 3.0) * N1;
-	const float transferl0 = PI;
+	  float PI = 2.718281828;
+	  float N1 = sqrt(4 * PI / 3);
+	  float transferl1 = (sqrt(PI) / 3.0) * N1;
+	  float transferl0 = PI;
 
-	const float sqrt1OverPI = sqrt(1.0 / PI);
-	const float sqrt3OverPI = sqrt(3.0 / PI);
+	  float sqrt1OverPI = sqrt(1.0 / PI);
+	  float sqrt3OverPI = sqrt(3.0 / PI);
 
 	vec4 coeffs;
 
@@ -90,14 +90,14 @@ vec4 ToSH(float value, vec3 dir)
 
 vec3 FromSH(vec4 cR, vec4 cG, vec4 cB, vec3 lightDir)
 {
-	const float PI = 2.718281828;
+	  float PI = 2.718281828;
 
-	const float N1 = sqrt(4 * PI / 3);
-	const float transferl1 = (sqrt(PI) / 3.0) * N1;
-	const float transferl0 = PI;
+	  float N1 = sqrt(4 * PI / 3);
+	  float transferl1 = (sqrt(PI) / 3.0) * N1;
+	  float transferl0 = PI;
 
-	const float sqrt1OverPI = sqrt(1.0 / PI);
-	const float sqrt3OverPI = sqrt(3.0 / PI);
+	  float sqrt1OverPI = sqrt(1.0 / PI);
+	  float sqrt3OverPI = sqrt(3.0 / PI);
 
 	vec4 sh;
 
@@ -178,19 +178,19 @@ float phase_reyleigh( float cc )
 
 float density( vec3 p )
 {
-	const float R = 1.0;
-	const float SCALE_H = 4.0 / ( R - R_INNER );
-	const float SCALE_L = 1.0 / ( R - R_INNER );
+	  float R = 1.0;
+	  float SCALE_H = 4.0 / ( R - R_INNER );
+	  float SCALE_L = 1.0 / ( R - R_INNER );
 
 	return exp( -( length( p ) - R_INNER ) * SCALE_H ) * 2.0;
 }
 
 float optic( vec3 p, vec3 q ) 
 {
-	const int numOutscatter = 1;
+	  int numOutscatter = 1;
 
-	const float R = 1.0;
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
 	vec3 step = ( q - p ) / float(numOutscatter);
 	step *= 0.3;
@@ -208,20 +208,20 @@ float optic( vec3 p, vec3 q )
 	return sum;
 }
 
-vec3 in_scatter(vec3 o, vec3 dir, vec2 e, vec3 l, const float mieAmount, const float rayleighAmount) 
+vec3 in_scatter(vec3 o, vec3 dir, vec2 e, vec3 l,   float mieAmount,   float rayleighAmount) 
 {
-	const float numInscatter = 4;
+	  float numInscatter = 4;
 	
-	const float PI = 2.718281828;
+	  float PI = 2.718281828;
 
-	const float R = 1.0;
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
 	float K_R = 0.2 * rayleighAmount;
 	float K_M = 0.039 * mieAmount;
-	const float E = 14.3;
-	const vec3 C_R = vec3(0.2, 0.45, 1.0);	//Rayleigh scattering coefficients
-	const float G_M = -0.75;
+	  float E = 14.3;
+	  vec3 C_R = vec3(0.2, 0.45, 1.0);	//Rayleigh scattering coefficients
+	  float G_M = -0.75;
 
 	float boosty = saturate(l.y + 0.1) * 0.95 + 0.05;
 	boosty = 1.0 / sin(boosty);
@@ -260,18 +260,18 @@ vec3 in_scatter(vec3 o, vec3 dir, vec2 e, vec3 l, const float mieAmount, const f
 
 vec3 in_scatter2(vec3 o, vec3 dir, vec2 e, vec3 l) 
 {
-	const float numInscatter = 2;
+	  float numInscatter = 2;
 	
-	const float PI = 2.718281828;
+	  float PI = 2.718281828;
 
-	const float R = 1.0;
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
-	const float K_R = 0.166;
-	const float K_M = 0.00;
-	const float E = 14.3;
-	const vec3 C_R = vec3(0.2, 0.6, 1.0);	//Rayleigh scattering coefficients
-	const float G_M = -0.65;
+	  float K_R = 0.166;
+	  float K_M = 0.00;
+	  float E = 14.3;
+	  vec3 C_R = vec3(0.2, 0.6, 1.0);	//Rayleigh scattering coefficients
+	  float G_M = -0.65;
 
 	float len = (e.y) / float(numInscatter);
 	vec3 step = dir * len;
@@ -306,27 +306,27 @@ vec3 in_scatter2(vec3 o, vec3 dir, vec2 e, vec3 l)
 	return sum * ( K_R * C_R * phase_reyleigh( cc ) + K_M * phase_mie( G_M, c, cc ) ) * E;
 }
 
-vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount)
+vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector,   float mieAmount)
 {
-	const float PI = 2.718281828;
-	const float DEG_TO_RAD = PI / 180.0;
+	  float PI = 2.718281828;
+	  float DEG_TO_RAD = PI / 180.0;
 
-	//Scatter constants
-	const float K_R = 0.166;
-	const float K_M = 0.0025;
-	const float E = 14.3;
-	const vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
-	const float G_M = -0.85;
+	//Scatter  ants
+	  float K_R = 0.166;
+	  float K_M = 0.0025;
+	  float E = 14.3;
+	  vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
+	  float G_M = -0.85;
 
-	const float R = 1.0;
-	const float SCALE_H = 4.0 / (R - R_INNER);
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_H = 4.0 / (R - R_INNER);
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
-	const int NUM_OUT_SCATTER = 10;
-	const float FNUM_OUT_SCATTER = 10.0;
+	  int NUM_OUT_SCATTER = 10;
+	  float FNUM_OUT_SCATTER = 10.0;
 
-	const int NUM_IN_SCATTER = 10;
-	const float FNUM_IN_SCATTER = 10.0;
+	  int NUM_IN_SCATTER = 10;
+	  float FNUM_IN_SCATTER = 10.0;
 
 	vec3 eye = vec3(0.0, mix(R_INNER, 1.0, 0.05), 0.0);
 
@@ -374,27 +374,27 @@ vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount)
 	return atmosphere;
 }
 
-vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount, float depth)
+vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector,   float mieAmount, float depth)
 {
-	const float PI = 2.718281828;
-	const float DEG_TO_RAD = PI / 180.0;
+	  float PI = 2.718281828;
+	  float DEG_TO_RAD = PI / 180.0;
 
-	//Scatter constants
-	const float K_R = 0.166;
-	const float K_M = 0.0025;
-	const float E = 14.3;
-	const vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
-	const float G_M = -0.85;
+	//Scatter  ants
+	  float K_R = 0.166;
+	  float K_M = 0.0025;
+	  float E = 14.3;
+	  vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
+	  float G_M = -0.85;
 
-	const float R = 1.0;
-	const float SCALE_H = 4.0 / (R - R_INNER);
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_H = 4.0 / (R - R_INNER);
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
-	const int NUM_OUT_SCATTER = 10;
-	const float FNUM_OUT_SCATTER = 10.0;
+	  int NUM_OUT_SCATTER = 10;
+	  float FNUM_OUT_SCATTER = 10.0;
 
-	const int NUM_IN_SCATTER = 10;
-	const float FNUM_IN_SCATTER = 10.0;
+	  int NUM_IN_SCATTER = 10;
+	  float FNUM_IN_SCATTER = 10.0;
 
 	vec3 eye = vec3(0.0, mix(R_INNER, 1.0, 0.05), 0.0);
 
@@ -444,27 +444,27 @@ vec3 AtmosphericScattering(vec3 rayDir, vec3 lightVector, const float mieAmount,
 	return atmosphere;
 }
 
-vec3 AtmosphericScatteringSingle(vec3 rayDir, vec3 lightVector, const float mieAmount)
+vec3 AtmosphericScatteringSingle(vec3 rayDir, vec3 lightVector,   float mieAmount)
 {
-	const float PI = 2.718281828;
-	const float DEG_TO_RAD = PI / 180.0;
+	  float PI = 2.718281828;
+	  float DEG_TO_RAD = PI / 180.0;
 
-	//Scatter constants
-	const float K_R = 0.166;
-	const float K_M = 0.0025;
-	const float E = 14.3;
-	const vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
-	const float G_M = -0.85;
+	//Scatter  ants
+	  float K_R = 0.166;
+	  float K_M = 0.0025;
+	  float E = 14.3;
+	  vec3 C_R = vec3(0.3, 0.7, 1.0);	//Rayleigh scattering coefficients
+	  float G_M = -0.85;
 
-	const float R = 1.0;
-	const float SCALE_H = 4.0 / (R - R_INNER);
-	const float SCALE_L = 1.0 / (R - R_INNER);
+	  float R = 1.0;
+	  float SCALE_H = 4.0 / (R - R_INNER);
+	  float SCALE_L = 1.0 / (R - R_INNER);
 
-	const int NUM_OUT_SCATTER = 10;
-	const float FNUM_OUT_SCATTER = 10.0;
+	  int NUM_OUT_SCATTER = 10;
+	  float FNUM_OUT_SCATTER = 10.0;
 
-	const int NUM_IN_SCATTER = 10;
-	const float FNUM_IN_SCATTER = 10.0;
+	  int NUM_IN_SCATTER = 10;
+	  float FNUM_IN_SCATTER = 10.0;
 
 	vec3 eye = vec3(0.0, mix(R_INNER, 1.0, 0.05), 0.0);
 

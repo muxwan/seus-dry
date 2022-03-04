@@ -5,19 +5,6 @@
 #include "Common.inc"
 
 
-/*
- _______ _________ _______  _______  _ 
-(  ____ \\__   __/(  ___  )(  ____ )( )
-| (    \/   ) (   | (   ) || (    )|| |
-| (_____    | |   | |   | || (____)|| |
-(_____  )   | |   | |   | ||  _____)| |
-      ) |   | |   | |   | || (      (_)
-/\____) |   | |   | (___) || )       _ 
-\_______)   )_(   (_______)|/       (_)
-
-Do not modify this code until you have read the LICENSE.txt contained in the root directory of this shaderpack!
-
-*/
 #define SHADOW_MAP_BIAS 0.90
 
 /////////ADJUSTABLE VARIABLES//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,17 +27,17 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 //of the shaders mod. The shaders mod only reads these lines and doesn't actually know the real value assigned to these variables in GLSL.
 //Some of these variables are critical for proper operation. Change at your own risk.
 
-const float 	shadowDistance 			= 120.0; // Shadow distance. Set lower if you prefer nicer close shadows. Set higher if you prefer nicer distant shadows. [80.0 120.0 180.0 240.0]
-const bool 		shadowHardwareFiltering0 = true;
+  float 	shadowDistance 			= 120.0; // Shadow distance. Set lower if you prefer nicer close shadows. Set higher if you prefer nicer distant shadows. [80.0 120.0 180.0 240.0]
+  bool 		shadowHardwareFiltering0 = true;
 
-const bool 		shadowtex1Mipmap = true;
-const bool 		shadowtex1Nearest = false;
-const bool 		shadowcolor0Mipmap = true;
-const bool 		shadowcolor0Nearest = false;
-const bool 		shadowcolor1Mipmap = true;
-const bool 		shadowcolor1Nearest = false;
+  bool 		shadowtex1Mipmap = true;
+  bool 		shadowtex1Nearest = false;
+  bool 		shadowcolor0Mipmap = true;
+  bool 		shadowcolor0Nearest = false;
+  bool 		shadowcolor1Mipmap = true;
+  bool 		shadowcolor1Nearest = false;
 
-const int 		noiseTextureResolution  = 64;
+  int 		noiseTextureResolution  = 64;
 
 
 //END OF INTERNAL VARIABLES//
@@ -178,7 +165,7 @@ float GetSkylight(in vec2 coord)
 	return texture2DLod(gdepth, coord, 0).g;
 }
 
-float 	GetMaterialMask(in vec2 coord, const in int ID) {
+float 	GetMaterialMask(in vec2 coord,   in int ID) {
 	float matID = (GetMaterialIDs(coord) * 255.0f);
 
 	//Catch last part of sky
@@ -282,10 +269,10 @@ float 	ExpToLinearDepth(in float depth)
 
 float GetAO(vec2 coord, vec3 normal, float dither)
 {
-	const int numRays = 8;
+	  int numRays = 8;
 
-	const float phi = 1.618033988;
-	const float gAngle = phi * 3.14159265 * 1.0003;
+	  float phi = 1.618033988;
+	  float gAngle = phi * 3.14159265 * 1.0003;
 
 	float depth = GetDepth(coord);
 	float linDepth = ExpToLinearDepth(depth);
@@ -530,7 +517,7 @@ vec4 GetLight(in int LOD, in vec2 offset, in float range, in float quality, vec3
 							dist = 10000000.0f;
 						}
 
-						const float falloffPower = 1.9f;
+						  float falloffPower = 1.9f;
 						float distanceWeight = (1.0f / (pow(dist * (62260.0f / rad), falloffPower) + 100.1f));
 							  //distanceWeight = max(0.0f, distanceWeight - 0.000009f);
 							  distanceWeight *= pow(length(offset), 2.0) * 50000.0 + 1.01;
@@ -611,7 +598,7 @@ vec4 GetLight(in int LOD, in vec2 offset, in float range, in float quality, vec3
 
 
 float  	CalculateDitherPattern1() {
-	const int[16] ditherPattern = int[16] (0 , 8 , 2 , 10,
+	  int[16] ditherPattern = int[16] (0 , 8 , 2 , 10,
 									 	   12, 4 , 14, 6 ,
 									 	   3 , 11, 1,  9 ,
 									 	   15, 7 , 13, 5 );
@@ -741,7 +728,7 @@ vec3 GetWavesNormal(vec3 position) {
 
 	float WAVE_HEIGHT = 1.5;
 
-	const float sampleDistance = 11.0f;
+	  float sampleDistance = 11.0f;
 
 	position -= vec3(0.005f, 0.0f, 0.005f) * sampleDistance;
 

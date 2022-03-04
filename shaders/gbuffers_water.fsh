@@ -267,7 +267,7 @@ vec3 GetWavesNormal(vec3 position, in float scale, in mat3 tbnMatrix) {
 	#endif
 
 
-	const float sampleDistance = 13.0f;
+	  float sampleDistance = 13.0f;
 
 	position -= vec3(0.005f, 0.0f, 0.005f) * sampleDistance;
 
